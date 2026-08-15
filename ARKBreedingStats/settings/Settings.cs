@@ -217,6 +217,14 @@ namespace ARKBreedingStats.settings
             foreach (var cm in Enum.GetNames(typeof(UiColors.ColorMode)))
                 CbbColorMode.Items.Add(cm);
 
+            toolTip1.SetToolTip(CbbColorMode,
+                "Adjusts stat and status colors for color vision deficiency:\n" +
+                "Regular — default colors\n" +
+                "Deuteranopia — red-green color blindness (no green)\n" +
+                "Protanopia — red-green color blindness (no red)\n" +
+                "Tritanopia — blue-yellow color blindness (no blue)\n" +
+                "Monochromacy — no color perception, shades only");
+
             CbbAppTheme.Items.Add("System");
             CbbAppTheme.Items.Add("Light");
             CbbAppTheme.Items.Add("Dark");
