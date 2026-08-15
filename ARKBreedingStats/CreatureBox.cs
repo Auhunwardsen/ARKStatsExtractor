@@ -120,7 +120,20 @@ namespace ARKBreedingStats
         {
             LbMotherAndWildInfo.Text = string.Empty;
             if (_creature == null) return;
-            groupBox1.Text = $"{_creature.name} (Lvl {_creature.Level}/{_creature.LevelHatched + _cc.maxDomLevel})";
+
+            // Truncate the name so long ones can't run under the edit (pen) button
+            // in the top-right corner of the group box caption.
+            var levelText = $" (Lvl {_creature.Level}/{_creature.LevelHatched + _cc.maxDomLevel})";
+            var maxCaptionWidth = groupBox1.Width - buttonEdit.Width - 16;
+            var name = _creature.name ?? string.Empty;
+            var truncated = false;
+            while (name.Length > 0 &&
+                   TextRenderer.MeasureText(name + "…" + levelText, groupBox1.Font).Width > maxCaptionWidth)
+            {
+                name = name.Substring(0, name.Length - 1);
+                truncated = true;
+            }
+            groupBox1.Text = (truncated ? name + "…" : name) + levelText;
 
             void SetParentLabel(Label l, string lbText = null, bool clickable = false)
             {
