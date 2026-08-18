@@ -235,7 +235,7 @@ namespace ARKBreedingStats.BreedingPlanning
         /// <summary>
         /// Returns the probability of at least one mutation, depending on the mutation counter and the traits.
         /// </summary>
-        private static double MutationProbability(Creature parent1, Creature parent2)
+        internal static double MutationProbability(Creature parent1, Creature parent2)
         {
             var mutationPossibleFrom = parent1.Mutations < Ark.MutationPossibleWithLessThan && parent2.Mutations < Ark.MutationPossibleWithLessThan ? 2
                 : parent1.Mutations < Ark.MutationPossibleWithLessThan || parent2.Mutations < Ark.MutationPossibleWithLessThan ? 1 : 0;

@@ -367,6 +367,8 @@ namespace ARKBreedingStats
             tamingControl1 = new TamingControl();
             tabPageBreedingPlan = new System.Windows.Forms.TabPage();
             breedingPlan1 = new BreedingPlan();
+            tabPageBreedingSimulator = new System.Windows.Forms.TabPage();
+            breedingSimulator1 = new BreedingSimulator();
             tabPageCurrentBreeds = new System.Windows.Forms.TabPage();
             currentBreeds1 = new CurrentBreeds();
             hatching1 = new Hatching();
@@ -485,6 +487,7 @@ namespace ARKBreedingStats
             tabPagePedigree.SuspendLayout();
             tabPageTaming.SuspendLayout();
             tabPageBreedingPlan.SuspendLayout();
+            tabPageBreedingSimulator.SuspendLayout();
             tabPageCurrentBreeds.SuspendLayout();
             tabPageRaising.SuspendLayout();
             tabPageTimer.SuspendLayout();
@@ -1721,6 +1724,7 @@ namespace ARKBreedingStats
             tabControlMain.Controls.Add(tabPagePedigree);
             tabControlMain.Controls.Add(tabPageTaming);
             tabControlMain.Controls.Add(tabPageBreedingPlan);
+            tabControlMain.Controls.Add(tabPageBreedingSimulator);
             tabControlMain.Controls.Add(tabPageCurrentBreeds);
             tabControlMain.Controls.Add(tabPageRaising);
             tabControlMain.Controls.Add(tabPageTimer);
@@ -3393,7 +3397,28 @@ namespace ARKBreedingStats
             breedingPlan1.Name = "breedingPlan1";
             breedingPlan1.Size = new System.Drawing.Size(2175, 912);
             breedingPlan1.TabIndex = 0;
-            // 
+            //
+            // tabPageBreedingSimulator
+            //
+            tabPageBreedingSimulator.Controls.Add(breedingSimulator1);
+            tabPageBreedingSimulator.Location = new System.Drawing.Point(4, 24);
+            tabPageBreedingSimulator.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageBreedingSimulator.Name = "tabPageBreedingSimulator";
+            tabPageBreedingSimulator.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            tabPageBreedingSimulator.Size = new System.Drawing.Size(2183, 918);
+            tabPageBreedingSimulator.TabIndex = 15;
+            tabPageBreedingSimulator.Text = "Breeding Simulator";
+            //
+            // breedingSimulator1
+            //
+            breedingSimulator1.AutoScroll = true;
+            breedingSimulator1.Dock = System.Windows.Forms.DockStyle.Fill;
+            breedingSimulator1.Location = new System.Drawing.Point(4, 3);
+            breedingSimulator1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            breedingSimulator1.Name = "breedingSimulator1";
+            breedingSimulator1.Size = new System.Drawing.Size(2175, 912);
+            breedingSimulator1.TabIndex = 0;
+            //
             // tabPageCurrentBreeds
             // 
             tabPageCurrentBreeds.Controls.Add(currentBreeds1);
@@ -4148,6 +4173,7 @@ namespace ARKBreedingStats
             tabPagePedigree.ResumeLayout(false);
             tabPageTaming.ResumeLayout(false);
             tabPageBreedingPlan.ResumeLayout(false);
+            tabPageBreedingSimulator.ResumeLayout(false);
             tabPageCurrentBreeds.ResumeLayout(false);
             tabPageRaising.ResumeLayout(false);
             tabPageTimer.ResumeLayout(false);
@@ -4260,6 +4286,7 @@ namespace ARKBreedingStats
         private System.Windows.Forms.ToolStripMenuItem unavailableToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeaderFound;
         private System.Windows.Forms.TabPage tabPageBreedingPlan;
+        private System.Windows.Forms.TabPage tabPageBreedingSimulator;
         private System.Windows.Forms.ToolStripMenuItem multiSetterToolStripMenuItem;
         private GroupBoxC gpPreviewEdit;
         private System.Windows.Forms.ListBox listBoxSpeciesLib;
@@ -4357,6 +4384,7 @@ namespace ARKBreedingStats
         private System.Windows.Forms.Panel panelToolBar;
         private System.Windows.Forms.Label lbSpecies;
         private BreedingPlan breedingPlan1;
+        private BreedingSimulator breedingSimulator1;
         private System.Windows.Forms.Label lbListening;
         private System.Windows.Forms.CheckBox cbToggleOverlay;
         private System.Windows.Forms.ToolStripButton toolStripButtonDeleteExpiredIncubationTimers;

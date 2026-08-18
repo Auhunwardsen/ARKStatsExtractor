@@ -1844,6 +1844,10 @@ namespace ARKBreedingStats
                 else
                     breedingPlan1.SetSpecies(speciesSelector1.SelectedSpecies);
             }
+            else if (tabControlMain.SelectedTab == tabPageBreedingSimulator)
+            {
+                breedingSimulator1.SetCreatures(_creatureCollection.creatures);
+            }
             else if (tabControlMain.SelectedTab == tabPageRaising)
             {
                 raisingControl1.UpdateRaisingData(speciesSelector1.SelectedSpecies);
