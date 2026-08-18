@@ -34,6 +34,12 @@ namespace ARKBreedingStats.Pedigree
             ControlDistance = (int)(10 * scale);
             PedigreeCreature.InitializeScaling(scale);
             PedigreeCreatureCompact.InitializeScaling(scale);
+
+            // PedigreeElementHeight is otherwise only set by DisplayMutationLevels, which is only
+            // called once a collection is loaded that needs a mod-value reload. Give it a valid
+            // default here so it's never left at its 0 default (which crashes pedigree/breeding-plan
+            // rendering with a 0-height Bitmap) for collections that never take that path.
+            DisplayMutationLevels(false);
         }
 
         public static void DisplayMutationLevels(bool displayMutationLevels)

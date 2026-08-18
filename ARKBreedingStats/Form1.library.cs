@@ -1321,10 +1321,16 @@ namespace ARKBreedingStats
                             CreatureCollection.CurrentCreatureCollection.maxServerLevel)
                         : cr.LevelHatched + CreatureCollection.CurrentCreatureCollection.maxDomLevel
                     ).ToString(),
-                    cr.TraitsString,
-                    string.Empty // columnHeaderImage: painted directly in ListViewLibrary_DrawSubItem, no text needed
+                    cr.TraitsString
                 })
                 .ToArray();
+
+            // A VirtualMode ListView requires exactly one subitem per column - if a column ever gets
+            // added here (e.g. columnHeaderImage, painted directly in ListViewLibrary_DrawSubItem with
+            // no text needed) without a corresponding entry above, WinForms throws when it paints the
+            // first real row instead of failing at compile time. Pad defensively instead of crashing.
+            if (subItems.Length < listViewLibrary.Columns.Count)
+                subItems = subItems.Concat(Enumerable.Repeat(string.Empty, listViewLibrary.Columns.Count - subItems.Length)).ToArray();
 
             // check if groups for species are displayed
             ListViewItem lvi = new ListViewItem(subItems) { Tag = cr };

@@ -304,11 +304,6 @@ namespace ARKBreedingStats
             // the constructor - reading it too early silently returns 0 and zeroes out pedigree/
             // breeding-plan control sizing, which later crashes creating a 0-height Bitmap.
             PedigreeCreation.InitializeScaling(DeviceDpi / 96f);
-            // PedigreeElementHeight is otherwise only set once a collection is loaded that needs a
-            // mod-value reload (see LoadModValuesOfCollection); a plain savegame import never sets
-            // it, leaving it at its 0 default and crashing the first time the Breeding Plan tab
-            // creates a 0-height pairing bitmap. Give it a valid default up front.
-            PedigreeCreation.DisplayMutationLevels(false);
 
             SetLocalizations(false);
 
