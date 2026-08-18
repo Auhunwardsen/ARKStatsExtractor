@@ -1093,8 +1093,40 @@ namespace ARKBreedingStats
 
         private void ListViewLibrary_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
-            var isDivider = e.Item.Tag is Creature creature && creature.flags.HasFlag(CreatureFlags.Divider);
-            e.DrawDefault = !isDivider;
+            var creature = e.Item.Tag as Creature;
+            var isDivider = creature != null && creature.flags.HasFlag(CreatureFlags.Divider);
+            if (isDivider)
+            {
+                e.DrawDefault = false;
+                return;
+            }
+
+            if (e.ColumnIndex == ColumnIndexImage && creature != null && !creature.flags.HasFlag(CreatureFlags.Placeholder))
+            {
+                e.DrawDefault = false;
+                var backColor = e.Item.Selected && listViewLibrary.Focused
+                    ? SystemColors.Highlight
+                    : e.Item.Selected
+                        ? SystemColors.ControlLight
+                        : e.SubItem?.BackColor ?? e.Item.BackColor;
+                using (var backBrush = new SolidBrush(backColor))
+                    e.Graphics.FillRectangle(backBrush, e.Bounds);
+
+                var thumbnail = LibraryThumbnails.GetOrRequestThumbnail(creature, listViewLibrary);
+                if (thumbnail != null)
+                {
+                    var size = Math.Min(e.Bounds.Width, e.Bounds.Height) - 2;
+                    if (size > 0)
+                    {
+                        var rect = new Rectangle(e.Bounds.X + (e.Bounds.Width - size) / 2,
+                            e.Bounds.Y + (e.Bounds.Height - size) / 2, size, size);
+                        e.Graphics.DrawImage(thumbnail, rect);
+                    }
+                }
+                return;
+            }
+
+            e.DrawDefault = true;
         }
 
         #endregion
@@ -1242,6 +1274,7 @@ namespace ARKBreedingStats
         private const int ColumnIndexFirstColor = 36;
         private const int ColumnIndexPostColor = 42;
         private const int ColumnIndexMutagenApplied = 46;
+        private const int ColumnIndexImage = 50;
 
         private ListViewItem CreateCreatureLvItem(Creature cr, bool displayIndex = false)
         {
@@ -2625,6 +2658,31 @@ namespace ARKBreedingStats
         }
 
         #region library list view columns
+
+        private void chooseColumnsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var columnChooser = new ColumnChooserForm(listViewLibrary, "Choose library columns",
+                       () => SaveListViewSettings(listViewLibrary, nameof(Properties.Settings.columnWidths), nameof(Properties.Settings.libraryColumnDisplayIndices)),
+                       LibraryColumnLabel))
+            {
+                columnChooser.ShowDialog(this);
+            }
+        }
+
+        /// <summary>
+        /// Gives the columns of listViewLibrary that just show a cryptic abbreviation (the per-stat wild/mutation level columns)
+        /// a clear label for the column chooser, e.g. "Health (mutation level)" instead of "HeM".
+        /// </summary>
+        private static string LibraryColumnLabel(ColumnHeader col)
+        {
+            var ci = col.Index;
+            if (ci == ColumnIndexImage) return "Creature image";
+            if (ci >= ColumnIndexFirstStat && ci < ColumnIndexFirstStat + Stats.StatsCount)
+                return Utils.StatName(ci - ColumnIndexFirstStat) + " (wild level)";
+            if (ci >= ColumnIndexFirstStat + Stats.StatsCount && ci < ColumnIndexFirstStat + 2 * Stats.StatsCount)
+                return Utils.StatName(ci - ColumnIndexFirstStat - Stats.StatsCount) + " (mutation level)";
+            return null; // fall back to the column's own header text
+        }
 
         private void resetColumnOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -297,6 +297,8 @@ namespace ARKBreedingStats
             columnHeaderCurrentLevel = new System.Windows.Forms.ColumnHeader();
             columnHeaderMaxPossibleLevel = new System.Windows.Forms.ColumnHeader();
             columnHeaderTraits = new System.Windows.Forms.ColumnHeader();
+            columnHeaderImage = new System.Windows.Forms.ColumnHeader();
+            imageListLibraryThumbnails = new System.Windows.Forms.ImageList(components);
             contextMenuStripLibrary = new System.Windows.Forms.ContextMenuStrip(components);
             toolStripMenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
             editAllSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -426,6 +428,8 @@ namespace ARKBreedingStats
             lbSpecies = new System.Windows.Forms.Label();
             TbMessageLabel = new System.Windows.Forms.TextBox();
             contextMenuStripLibraryHeader = new System.Windows.Forms.ContextMenuStrip(components);
+            chooseColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparatorChooseColumns = new System.Windows.Forms.ToolStripSeparator();
             toolStripMenuItemResetLibraryColumnWidths = new System.Windows.Forms.ToolStripMenuItem();
             resetColumnWidthNoMutationLevelColumnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             restoreMutationLevelsASAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -2437,9 +2441,10 @@ namespace ARKBreedingStats
             // listViewLibrary
             // 
             listViewLibrary.AllowColumnReorder = true;
-            listViewLibrary.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { columnHeaderName, columnHeaderOwner, columnHeaderNote, columnHeaderServer, columnHeaderSex, columnHeaderDomesticated, columnHeaderTopness, columnHeaderTopStatsNr, columnHeaderGen, columnHeaderFound, columnHeaderMutations, columnHeaderCooldown, columnHeaderHP, columnHeaderSt, columnHeaderTo, columnHeaderOx, columnHeaderFo, columnHeaderWa, columnHeaderTm, columnHeaderWe, columnHeaderDm, columnHeaderSp, columnHeaderFr, columnHeaderCr, columnHeaderHPM, columnHeaderStM, columnHeaderToM, columnHeaderOxM, columnHeaderFoM, columnHeaderWaM, columnHeaderTmM, columnHeaderWeM, columnHeaderDmM, columnHeaderSpM, columnHeaderFrM, columnHeaderCrM, columnHeaderColor0, columnHeaderColor1, columnHeaderColor2, columnHeaderColor3, columnHeaderColor4, columnHeaderColor5, columnHeaderSpecies, columnHeaderStatus, columnHeaderTribe, columnHeaderStatusIcon, columnHeaderMutagen, columnHeaderCurrentLevel, columnHeaderMaxPossibleLevel, columnHeaderTraits });
+            listViewLibrary.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { columnHeaderName, columnHeaderOwner, columnHeaderNote, columnHeaderServer, columnHeaderSex, columnHeaderDomesticated, columnHeaderTopness, columnHeaderTopStatsNr, columnHeaderGen, columnHeaderFound, columnHeaderMutations, columnHeaderCooldown, columnHeaderHP, columnHeaderSt, columnHeaderTo, columnHeaderOx, columnHeaderFo, columnHeaderWa, columnHeaderTm, columnHeaderWe, columnHeaderDm, columnHeaderSp, columnHeaderFr, columnHeaderCr, columnHeaderHPM, columnHeaderStM, columnHeaderToM, columnHeaderOxM, columnHeaderFoM, columnHeaderWaM, columnHeaderTmM, columnHeaderWeM, columnHeaderDmM, columnHeaderSpM, columnHeaderFrM, columnHeaderCrM, columnHeaderColor0, columnHeaderColor1, columnHeaderColor2, columnHeaderColor3, columnHeaderColor4, columnHeaderColor5, columnHeaderSpecies, columnHeaderStatus, columnHeaderTribe, columnHeaderStatusIcon, columnHeaderMutagen, columnHeaderCurrentLevel, columnHeaderMaxPossibleLevel, columnHeaderTraits, columnHeaderImage });
             listViewLibrary.ContextMenuStrip = contextMenuStripLibrary;
             listViewLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
+            listViewLibrary.SmallImageList = imageListLibraryThumbnails;
             listViewLibrary.FullRowSelect = true;
             listViewLibrary.Location = new System.Drawing.Point(239, 3);
             listViewLibrary.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -2772,9 +2777,21 @@ namespace ARKBreedingStats
             // columnHeaderTraits
             // 
             columnHeaderTraits.Text = "Traits";
-            // 
+            //
+            // columnHeaderImage
+            //
+            columnHeaderImage.Text = "Img";
+            columnHeaderImage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            columnHeaderImage.Width = 40;
+            //
+            // imageListLibraryThumbnails
+            //
+            imageListLibraryThumbnails.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            imageListLibraryThumbnails.ImageSize = new System.Drawing.Size(28, 28);
+            imageListLibraryThumbnails.TransparentColor = System.Drawing.Color.Transparent;
+            //
             // contextMenuStripLibrary
-            // 
+            //
             contextMenuStripLibrary.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemEdit, editAllSelectedToolStripMenuItem, toolStripSeparator17, toolStripMenuItemGenerateCreatureName, toolStripMenuItemCopyGeneratedCreatureName, toolStripMenuItemCopyCreatureName, toolStripSeparator9, copyValuesToExtractorToolStripMenuItem, exportToClipboardToolStripMenuItem1, copyInfographicToClipboardToolStripMenuItem, saveInfographicsToFolderToolStripMenuItem, saveStitchedInfographicsToFileToolStripMenuItem, viewColorsInLibraryInfoToolStripMenuItem, toolStripSeparator22, SetMaturityCooldownToolStripMenuItem, bestBreedingPartnersToolStripMenuItem, breedingPlanForSelectedCreaturesToolStripMenuItem, toolStripMenuItemStatus, applyMutagenToolStripMenuItem, editTraitsToolStripMenuItem, toolStripSeparator16, adminCommandToSetColorsToolStripMenuItem, adminCommandToSpawnExactDinoToolStripMenuItem, adminCommandToSpawnExactDinoDS2ToolStripMenuItem, adminCommandSetMutationLevelsToolStripMenuItem, fixColorsToolStripMenuItem, toolStripSeparator6, toolStripMenuItemOpenWiki, toolStripSeparator14, toolStripMenuItemRemove });
             contextMenuStripLibrary.Name = "contextMenuStripLibrary";
             contextMenuStripLibrary.Size = new System.Drawing.Size(302, 568);
@@ -3975,10 +3992,22 @@ namespace ARKBreedingStats
             // 
             // contextMenuStripLibraryHeader
             // 
-            contextMenuStripLibraryHeader.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemResetLibraryColumnWidths, resetColumnWidthNoMutationLevelColumnsToolStripMenuItem, restoreMutationLevelsASAToolStripMenuItem, collapseMutationsLevelsASEToolStripMenuItem, toolStripSeparator27, resetColumnOrderToolStripMenuItem });
+            contextMenuStripLibraryHeader.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { chooseColumnsToolStripMenuItem, toolStripSeparatorChooseColumns, toolStripMenuItemResetLibraryColumnWidths, resetColumnWidthNoMutationLevelColumnsToolStripMenuItem, restoreMutationLevelsASAToolStripMenuItem, collapseMutationsLevelsASEToolStripMenuItem, toolStripSeparator27, resetColumnOrderToolStripMenuItem });
             contextMenuStripLibraryHeader.Name = "contextMenuStrip1";
-            contextMenuStripLibraryHeader.Size = new System.Drawing.Size(333, 120);
-            // 
+            contextMenuStripLibraryHeader.Size = new System.Drawing.Size(333, 150);
+            //
+            // chooseColumnsToolStripMenuItem
+            //
+            chooseColumnsToolStripMenuItem.Name = "chooseColumnsToolStripMenuItem";
+            chooseColumnsToolStripMenuItem.Size = new System.Drawing.Size(332, 22);
+            chooseColumnsToolStripMenuItem.Text = "Choose columns...";
+            chooseColumnsToolStripMenuItem.Click += chooseColumnsToolStripMenuItem_Click;
+            //
+            // toolStripSeparatorChooseColumns
+            //
+            toolStripSeparatorChooseColumns.Name = "toolStripSeparatorChooseColumns";
+            toolStripSeparatorChooseColumns.Size = new System.Drawing.Size(329, 6);
+            //
             // toolStripMenuItemResetLibraryColumnWidths
             // 
             toolStripMenuItemResetLibraryColumnWidths.Name = "toolStripMenuItemResetLibraryColumnWidths";
@@ -4404,6 +4433,8 @@ namespace ARKBreedingStats
         private System.Windows.Forms.ToolStripMenuItem copyInfographicToClipboardToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader columnHeaderStatusIcon;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripLibraryHeader;
+        private System.Windows.Forms.ToolStripMenuItem chooseColumnsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorChooseColumns;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemResetLibraryColumnWidths;
         private System.Windows.Forms.ToolStripSeparator maturationSeparator;
         private System.Windows.Forms.ToolStripMenuItem clearMatingCooldownToolStripMenuItem;
@@ -4515,6 +4546,8 @@ namespace ARKBreedingStats
         private System.Windows.Forms.ColumnHeader columnHeaderCurrentLevel;
         private System.Windows.Forms.ColumnHeader columnHeaderMaxPossibleLevel;
         private System.Windows.Forms.ColumnHeader columnHeaderTraits;
+        private System.Windows.Forms.ColumnHeader columnHeaderImage;
+        private System.Windows.Forms.ImageList imageListLibraryThumbnails;
         private System.Windows.Forms.ToolStripMenuItem editVariantTagsToHideToolStripMenuItem;
         private System.Windows.Forms.Panel pBondedTamingExtractor;
         private System.Windows.Forms.RadioButton RbBondedTaming3;

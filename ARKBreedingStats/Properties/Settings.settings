@@ -540,7 +540,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LibraryShowMutationLevelColumns" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="StreamerMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
