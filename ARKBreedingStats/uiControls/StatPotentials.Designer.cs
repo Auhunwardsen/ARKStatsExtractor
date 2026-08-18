@@ -92,52 +92,55 @@
             label4.Text = resources.GetString("label4.Text");
             // 
             // panel1
-            // 
-            panel1.Controls.Add(LbWildLevels);
+            //
             panel1.Controls.Add(LbDomLevels);
             panel1.Controls.Add(LbImprinting);
+            panel1.Controls.Add(LbWildLevels);
             panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             panel1.Location = new System.Drawing.Point(4, 3);
             panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(326, 38);
             panel1.TabIndex = 5;
-            // 
+            //
             // LbWildLevels
-            // 
+            //
             LbWildLevels.BackColor = System.Drawing.Color.LightCoral;
             LbWildLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            LbWildLevels.Location = new System.Drawing.Point(4, 0);
+            LbWildLevels.Dock = System.Windows.Forms.DockStyle.Left;
+            LbWildLevels.AutoSize = false;
             LbWildLevels.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             LbWildLevels.Name = "LbWildLevels";
             LbWildLevels.Size = new System.Drawing.Size(93, 26);
             LbWildLevels.TabIndex = 1;
             LbWildLevels.Text = "Wild-Levels";
             LbWildLevels.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // LbDomLevels
-            // 
-            LbDomLevels.BackColor = System.Drawing.Color.Gold;
-            LbDomLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            LbDomLevels.Location = new System.Drawing.Point(204, 0);
-            LbDomLevels.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            LbDomLevels.Name = "LbDomLevels";
-            LbDomLevels.Size = new System.Drawing.Size(93, 26);
-            LbDomLevels.TabIndex = 3;
-            LbDomLevels.Text = "Dom-Leveling";
-            LbDomLevels.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // LbImprinting
-            // 
+            //
             LbImprinting.BackColor = System.Drawing.Color.SkyBlue;
             LbImprinting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            LbImprinting.Location = new System.Drawing.Point(104, 0);
+            LbImprinting.Dock = System.Windows.Forms.DockStyle.Left;
+            LbImprinting.AutoSize = false;
             LbImprinting.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             LbImprinting.Name = "LbImprinting";
             LbImprinting.Size = new System.Drawing.Size(93, 26);
             LbImprinting.TabIndex = 2;
             LbImprinting.Text = "Imprinting";
             LbImprinting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // LbDomLevels
+            //
+            LbDomLevels.BackColor = System.Drawing.Color.Gold;
+            LbDomLevels.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            LbDomLevels.Dock = System.Windows.Forms.DockStyle.Left;
+            LbDomLevels.AutoSize = false;
+            LbDomLevels.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            LbDomLevels.Name = "LbDomLevels";
+            LbDomLevels.Size = new System.Drawing.Size(93, 26);
+            LbDomLevels.TabIndex = 3;
+            LbDomLevels.Text = "Dom-Leveling";
+            LbDomLevels.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StatPotentials
             // 
