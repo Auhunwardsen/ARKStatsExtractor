@@ -9,7 +9,6 @@
     <RootNamespace>ARKBreedingStats</RootNamespace>
     <AssemblyName>ARK Smart Breeding</AssemblyName>
     <ApplicationIcon>ARKSmartBreeding.ico</ApplicationIcon>
-    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
 
     <!-- Version is the single source of truth -->
     <Version>0.73.1.1</Version>

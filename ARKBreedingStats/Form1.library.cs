@@ -1321,7 +1321,8 @@ namespace ARKBreedingStats
                             CreatureCollection.CurrentCreatureCollection.maxServerLevel)
                         : cr.LevelHatched + CreatureCollection.CurrentCreatureCollection.maxDomLevel
                     ).ToString(),
-                    cr.TraitsString
+                    cr.TraitsString,
+                    string.Empty // columnHeaderImage: painted directly in ListViewLibrary_DrawSubItem, no text needed
                 })
                 .ToArray();
 
